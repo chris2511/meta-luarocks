@@ -1,0 +1,28 @@
+From 679b8d6d88dca07f7cf7c79c7e1382be7093cdbe Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <christian@hohnstaedt.de>
+Date: Fri, 23 Jul 2021 00:36:57 +0200
+Subject: [PATCH] luarocks-native: avoid using host libs and includes
+
+luarocks now ignores lua.h in /usr/include,
+as well as libs in /usr/lib
+---
+ src/luarocks/build/builtin.lua | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/src/luarocks/build/builtin.lua b/src/luarocks/build/builtin.lua
+index 98db29d..6054b79 100644
+--- a/src/luarocks/build/builtin.lua
++++ b/src/luarocks/build/builtin.lua
+@@ -236,12 +236,10 @@ function builtin.run(rockspec, no_install)
+       compile_object = function(object, source, defines, incdirs)
+          local extras = {}
+          add_flags(extras, "-D%s", defines)
+-         add_flags(extras, "-I%s", incdirs)
+          return execute(variables.CC.." "..variables.CFLAGS, "-I"..variables.LUA_INCDIR, "-c", source, "-o", object, unpack(extras))
+       end
+       compile_library = function (library, objects, libraries, libdirs)
+          local extras = { unpack(objects) }
+-         add_flags(extras, "-L%s", libdirs)
+          if cfg.gcc_rpath then
+             add_flags(extras, "-Wl,-rpath,%s", libdirs)
+          end

@@ -9,9 +9,12 @@ DEPENDS += "\
             lua-native \
             openssl-native \
             unzip-native \
+            lua \
             "
 
-SRC_URI = "git://github.com/luarocks/luarocks;protocol=https"
+SRC_URI = "git://github.com/luarocks/luarocks;protocol=https \
+           file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
+           "
 SRCREV = "0c5934213e36b4f1348d199c65f84d8644413adc"
 
 S = "${WORKDIR}/git"
@@ -23,7 +26,7 @@ do_configure() {
 }
 
 do_compile() {
-    oe_runmake
+    oe_runmake LUA_INCDIR="${RECIPE_SYSROOT}/usr/include"
 }
 
 do_install() {
