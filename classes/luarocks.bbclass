@@ -27,8 +27,9 @@ EOF
 do_compile() {
   export LUA_VERSION="${LUA_VERSION}"
   export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
-  export LUA_PATH=${RECIPE_SYSROOT}/usr/share/lua/${LUA_VERSION}/luarocks
-  luarocks --only-sources= make --deps-mode=none --no-manifest
+  export LUA_PATH=${RECIPE_SYSROOT_NATIVE}/usr/share/lua/${LUA_VERSION}/luarocks
+  test "${LUA_EXTRA_EXPORTS}" && export ${LUA_EXTRA_EXPORTS}
+  ${RECIPE_SYSROOT_NATIVE}/usr/bin/lua ${RECIPE_SYSROOT_NATIVE}/usr/bin/luarocks --only-sources= make --deps-mode=none --no-manifest
 }
 
 do_install() {
