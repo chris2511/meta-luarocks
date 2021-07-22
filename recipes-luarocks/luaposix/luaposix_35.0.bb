@@ -11,4 +11,6 @@ RDEPENDS_${PN} = "lua"
 
 S = "${WORKDIR}/luaposix-35.0"
 
+LUAROCKS_EXTRA_CC = "${LDFLAGS}"
+
 inherit luarocks
