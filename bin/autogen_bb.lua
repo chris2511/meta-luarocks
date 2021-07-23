@@ -23,10 +23,18 @@ end
 -- inspect Package
 function inspect_pkg(source)
   local result = { }
+  if source.url:sub(1,9):lower() == "git+https" then
+    source.url = "git" .. source.url:sub(10)
+  end
   if source.url:sub(-4):lower() == ".zip" then
-    unpack = "unzip -fobq arch.zip"
-  elseif source.url:sub(-4):lower() == ".git" then
-    result["pkg_hash"] = string.format('SRCREV = "%s"', source.branch)
+    unpack = "unzip -obq arch.zip"
+  elseif source.url:sub(1,4):lower() == "git:" or
+         source.url:sub(-4):lower() == ".git" then
+    if source.branch then
+      source.url = source.url .. ";branch=" .. source.branch
+    end
+    result["pkg_hash"] = string.format('SRCREV = "%s"',
+				source.tag or source.branch)
     result["pkg_dir"] = "git"
     result["pkg_lic"] = "license"
     return result
@@ -46,7 +54,10 @@ cd .. && rm -rf TEMP/
   result["pkg_hash"] = string.format('SRC_URI[sha256sum] = "%s"',
 				 ret:read():match("[^%s]*"))
   local lic = ret:read()
-  local f = string.gmatch(lic, "[^%s]+")
+  local f = function () return "" end
+  if lic then
+    f = string.gmatch(lic, "[^%s]+")
+  end
   result["license_md5"] = f()
   f = string.gmatch(f(), "[^/]+")
   result["pkg_dir"] = f()
@@ -134,6 +145,9 @@ RDEPENDS_${PN} = "lua"
 
 S = "${WORKDIR}/%s"
 
+# If the QA error about gnu-hash shows up, try uncommenting the following line
+# LUAROCKS_EXTRA_CC = "${LDFLAGS}"
+
 inherit luarocks
 ]],
 description.summary, description.homepage,
@@ -147,4 +161,13 @@ result["pkg_dir"]
 
 end
 
-create_package(arg[1])
+if not arg[1] then
+  print(string.format([[
+Usage: %s <packagename>
+  packagename is the luarocks name of the package.
+  If it does not start with "lua", this script will prepend a "lua-"
+  to create the bitbake recipe name
+]], arg[0]))
+else
+  create_package(arg[1])
+end
