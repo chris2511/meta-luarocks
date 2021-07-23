@@ -1,33 +1,34 @@
 
+BBCLASSEXTEND = "native"
+
 LUA_VERSION="5.3"
 
-DEPENDS = "luarocks-native"
+DEPENDS += "luarocks-native"
 RDEPENDS_${PN} = "lua"
-PACKAGES =+ "${PN}-luarocks"
-
-S = "${WORKDIR}/git"
 
 FILES_${PN} += "${libdir} ${datadir}"
-FILES_${PN}-luarocks = "${libdir}/luarocks"
+FILES_${PN}-dev = "${libdir}/luarocks"
 
 do_configure() {
   cat > ${WORKDIR}/luarocks.config << EOF
-rocks_trees = { "${WORKDIR}/rockinst/usr" }
+rocks_trees = { "${RECIPE_SYSROOT}/usr",
+		"${WORKDIR}/rockinst/usr" }
 rocks_servers = { }
 arch = "${TARGET_OS}-${TARGET_ARCH}"
 target_cpu = "${TARGET_ARCH}"
 lib_modules_path = "/lib/lua/${LUA_VERSION}"
+variables = variables or { }
 variables["CC"] = "${CC} -fPIC"
 variables["LD"] = "${LD}"
-variables["CFLAGS"] = "${CFLAGS} -Wblahhhhh"
-dump_env()
+variables["CFLAGS"] = "${CFLAGS} ${LDFLAGS}"
 EOF
 }
 
 do_compile() {
   export LUA_VERSION="${LUA_VERSION}"
   export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
-  luarocks make
+  export LUA_PATH=${RECIPE_SYSROOT}/usr/share/lua/${LUA_VERSION}/luarocks
+  luarocks --only-sources= make --deps-mode=none --no-manifest
 }
 
 do_install() {

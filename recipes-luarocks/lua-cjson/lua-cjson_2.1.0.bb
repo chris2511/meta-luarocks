@@ -9,3 +9,5 @@ SRCREV = "e8972ac754788d3ef10a57a36016d6c3e85ba20d"
 FILES_${PN}-ptest = "${bindir} ${prefix}/share"
 
 inherit ptest luarocks
+
+S="${WORKDIR}/git"
