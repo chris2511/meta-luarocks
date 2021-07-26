@@ -1,0 +1,24 @@
+From 6108eef552dd07569f85c20fd91eaf71d3cb53cd Mon Sep 17 00:00:00 2001
+From: leaf corcoran <leafot@gmail.com>
+Date: Sun, 22 Sep 2019 13:43:18 -0700
+Subject: [PATCH] use macro instead of header defines for Lua 5.2+ support
+
+---
+ lua_cjson.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/lua_cjson.c b/lua_cjson.c
+index 505e900..e65bcf2 100644
+--- a/lua_cjson.c
++++ b/lua_cjson.c
+@@ -92,6 +92,10 @@
+ #define strcasecmp _stricmp
+ #endif
+ 
++#if LUA_VERSION_NUM > 501
++#define lua_objlen(L,i) lua_rawlen(L, (i))
++#endif
++
+ static const char * const *json_empty_array;
+ static const char * const *json_array;
+ 
