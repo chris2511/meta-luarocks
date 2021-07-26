@@ -18,6 +18,7 @@ rocks_servers = { }
 arch = "${TARGET_OS}-${TARGET_ARCH}"
 target_cpu = "${TARGET_ARCH}"
 lib_modules_path = "/lib/lua/${LUA_VERSION}"
+gcc_rpath = false
 variables = {
   CC = "${CC} -fPIC ${LUAROCKS_EXTRA_CC}",
   LD = "${CC} ${LDFLAGS} ${LUAROCKS_EXTRA_LD}",
