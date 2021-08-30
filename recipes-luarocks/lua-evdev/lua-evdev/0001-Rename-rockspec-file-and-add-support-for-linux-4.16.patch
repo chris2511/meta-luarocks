@@ -1,0 +1,43 @@
+From 045ca610c06e612c8fa9958e6365c3ef86761315 Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <Christian.Hohnstaedt@wago.com>
+Date: Mon, 30 Aug 2021 15:51:15 +0200
+Subject: [PATCH] Rename rockspec file and add support for linux >= 4.16
+
+- Comply with luarocks rockspec naming scheme
+- newer kernels use "input_event_[u]sec" to access the time
+  entry
+---
+ evdev-scm.rockspec => evdev-scm-1.rockspec | 0
+ evdev/core.c                               | 7 ++++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+ rename evdev-scm.rockspec => evdev-scm-1.rockspec (100%)
+
+diff --git a/evdev-scm.rockspec b/evdev-scm-1.rockspec
+similarity index 100%
+rename from evdev-scm.rockspec
+rename to evdev-scm-1.rockspec
+diff --git a/evdev/core.c b/evdev/core.c
+index d660cd2..8d8cb2b 100644
+--- a/evdev/core.c
++++ b/evdev/core.c
+@@ -30,6 +30,11 @@ THE SOFTWARE.
+ #define _GNU_SOURCE
+ #endif
+ 
++#ifndef input_event_sec
++#define input_event_sec time.tv_sec
++#define input_event_usec time.tv_usec
++#endif
++
+ #include <errno.h>
+ #include <unistd.h>
+ #include <string.h>
+@@ -99,7 +104,7 @@ static int evdev_tryRead(lua_State *L) {
+ 	}
+ 
+ 	/* return: timestamp, event type, event code, event value */
+-	lua_pushnumber(L, evt.time.tv_sec + evt.time.tv_usec/1000000.0);
++	lua_pushnumber(L, evt.input_event_sec + evt.input_event_usec/1000000.0);
+ 	lua_pushinteger(L, evt.type);
+ 	lua_pushinteger(L, evt.code);
+ 	lua_pushinteger(L, evt.value);
