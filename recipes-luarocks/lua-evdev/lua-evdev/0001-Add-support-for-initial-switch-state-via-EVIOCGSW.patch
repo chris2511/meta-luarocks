@@ -1,0 +1,47 @@
+From fa621a0cf5b0d003e3015d79ab5aed97ade348cb Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <christian@hohnstaedt.de>
+Date: Wed, 1 Sep 2021 20:12:36 +0200
+Subject: [PATCH] Add support for initial switch state via EVIOCGSW
+
+---
+ evdev/core.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/evdev/core.c b/evdev/core.c
+index 8d8cb2b..0504e7d 100644
+--- a/evdev/core.c
++++ b/evdev/core.c
+@@ -153,6 +153,25 @@ static int evdev_write(lua_State *L) {
+ 	return 0;
+ }
+ 
++static int evdev_swstate(lua_State *L) {
++	CHECK_EVDEV(dev, 1);
++
++	uint32_t n=0;
++	int i, j;
++
++	if (ioctl(dev->fd, EVIOCGSW(sizeof(n)), &n) < 0)
++		return luaL_error("ioctl(EVIOCGSW): %s", strerror(errno));
++
++	lua_newtable(L);
++	for (i=0, j=0; i<32; i++) {
++		if (n & (1<<i)) {
++			lua_pushinteger(L, i);
++			lua_seti(L, -2, j++);
++		}
++	}
++	return 1;
++}
++
+ static int evdev_close(lua_State *L) {
+ 	struct inputDevice *dev = luaL_checkudata(L, 1, EVDEV_USERDATA);
+ 	
+@@ -317,6 +336,7 @@ static const luaL_Reg evdev_mtFuncs[] = {
+ 	{ "read", &evdev_read },
+ 	{ "tryRead", &evdev_tryRead },
+ 	{ "write", &evdev_write},
++	{ "swstate", &evdev_swstate},
+ 	{ "close", &evdev_close },
+ 	{ "grab", &evdev_grab },
+ 	{ "pollfd", &evdev_pollfd },
