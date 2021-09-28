@@ -1,4 +1,4 @@
-From 6108eef552dd07569f85c20fd91eaf71d3cb53cd Mon Sep 17 00:00:00 2001
+From 11cbcdf7088fa33efd9c03f02566f39d600f63a0 Mon Sep 17 00:00:00 2001
 From: leaf corcoran <leafot@gmail.com>
 Date: Sun, 22 Sep 2019 13:43:18 -0700
 Subject: [PATCH] use macro instead of header defines for Lua 5.2+ support
@@ -8,11 +8,11 @@ Subject: [PATCH] use macro instead of header defines for Lua 5.2+ support
  1 file changed, 4 insertions(+)
 
 diff --git a/lua_cjson.c b/lua_cjson.c
-index 505e900..e65bcf2 100644
+index 875bdaf..1cb44e7 100644
 --- a/lua_cjson.c
 +++ b/lua_cjson.c
-@@ -92,6 +92,10 @@
- #define strcasecmp _stricmp
+@@ -102,6 +102,10 @@
+ #define json_lightudata_mask(ludata)    (ludata)
  #endif
  
 +#if LUA_VERSION_NUM > 501
