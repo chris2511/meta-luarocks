@@ -1,4 +1,5 @@
-DESCRIPTION = "libYAML binding for Lua"
+SUMMARY = "libYAML binding for Lua"
+DESCRIPTION = "Read and write YAML format files with Lua."
 HOMEPAGE = "http://github.com/gvvaughan/lyaml"
 LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=cc02c78fbad9c9c6652bdabc6a345b94"

@@ -130,8 +130,10 @@ function create_package(package)
   print(string.format("Generating Bitbake file '%s'", bbfile))
 
   out = io.open(bbfile, "w")
+  desc = string.gsub(description.detailed or "", "%s+", " ")
 
   out:write(string.format([[
+SUMMARY = "%s"
 DESCRIPTION = "%s"
 HOMEPAGE = "%s"
 LICENSE = "%s"
@@ -150,7 +152,7 @@ S = "${WORKDIR}/%s"
 
 inherit luarocks
 ]],
-description.summary, description.homepage,
+description.summary, desc, description.homepage,
 license, result["pkg_lic"], result["license_md5"],
 source.url, result["pkg_hash"],
 table.concat(bb_deps, " "),

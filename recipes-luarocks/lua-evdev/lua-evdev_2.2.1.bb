@@ -1,4 +1,5 @@
-DESCRIPTION = "Lua library for using Linux evdev & uinput interfaces"
+SUMMARY = "Lua library for using Linux evdev & uinput interfaces"
+DESCRIPTION = "A Lua 5.2 module for interacting with input devices on Linux. You can read events with a Device object, or create a virtual input device with a Uinput object."
 HOMEPAGE = "http://github.com/Tangent128/lua-evdev"
 LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENCE;md5=09b2d059ab048def211a06d0018f9cbc"

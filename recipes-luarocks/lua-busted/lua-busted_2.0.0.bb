@@ -1,4 +1,5 @@
-DESCRIPTION = "Elegant Lua unit testing."
+SUMMARY = "Elegant Lua unit testing."
+DESCRIPTION = "An elegant, extensible, testing framework. Ships with a large amount of useful asserts, plus the ability to write your own. Output in pretty or plain terminal format, JSON, or TAP for CI integration. Great for TDD and unit, integration, and functional tests."
 HOMEPAGE = "http://olivinelabs.com/busted/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=cabb1471206ff05b6b3e0e0af73dbd33"

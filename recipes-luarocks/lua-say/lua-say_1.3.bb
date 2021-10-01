@@ -1,4 +1,5 @@
-DESCRIPTION = "Lua String Hashing/Indexing Library"
+SUMMARY = "Lua String Hashing/Indexing Library"
+DESCRIPTION = "Useful for internationalization."
 HOMEPAGE = "http://olivinelabs.com/busted/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=005de8f8f73245c988a708cf1cace960"

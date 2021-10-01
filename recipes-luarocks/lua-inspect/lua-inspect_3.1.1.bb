@@ -1,4 +1,5 @@
-DESCRIPTION = "Lua table visualizer, ideal for debugging"
+SUMMARY = "Lua table visualizer, ideal for debugging"
+DESCRIPTION = "inspect will print out your lua tables nicely so you can debug your programs quickly. It sorts keys by type and name and handles recursive tables properly."
 HOMEPAGE = "https://github.com/kikito/inspect.lua"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://inspect.lua;start=6;end=27;md5=ed472f262de57982d758ac61341b9936"
