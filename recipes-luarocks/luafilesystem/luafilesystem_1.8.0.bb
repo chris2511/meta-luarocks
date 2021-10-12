@@ -1,3 +1,4 @@
+SUMMARY = "File System Library for the Lua Programming Language"
 DESCRIPTION = "LuaFileSystem is a Lua library developed to complement the set of functions related to file systems offered by the standard Lua distribution."
 LICENSE = "MIT"
 HOMEPAGE = "https://github.com/keplerproject/luafilesystem"

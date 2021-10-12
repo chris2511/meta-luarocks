@@ -1,4 +1,5 @@
-DESCRIPTION = "Lua Assertions Extension"
+SUMMARY = "Lua Assertions Extension"
+DESCRIPTION = "Adds a framework that allows registering new assertions without compromising builtin assertion functionality."
 HOMEPAGE = "http://olivinelabs.com/busted/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=005de8f8f73245c988a708cf1cace960"
