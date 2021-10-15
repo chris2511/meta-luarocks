@@ -7,9 +7,6 @@ LIC_FILES_CHKSUM = "file://inspect.lua;start=6;end=27;md5=ed472f262de57982d758ac
 SRC_URI = "https://github.com/kikito/inspect.lua/archive/v3.1.1.tar.gz"
 SRC_URI[sha256sum] = "0292f4960ef0ccb2c7334911981b280f9016c57a29c90c5ff5d3823621f6e0db"
 
-DEPENDS += ""
-RDEPENDS_${PN} = "lua"
-
 S = "${WORKDIR}/inspect.lua-${PV}"
 
 inherit luarocks

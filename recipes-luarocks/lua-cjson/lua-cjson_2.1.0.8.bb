@@ -9,9 +9,6 @@ SRC_URI = "git://github.com/openresty/lua-cjson.git \
            "
 SRCREV = "${PV}"
 
-DEPENDS += ""
-RDEPENDS_${PN} = "lua"
-
 S = "${WORKDIR}/git"
 
 inherit luarocks

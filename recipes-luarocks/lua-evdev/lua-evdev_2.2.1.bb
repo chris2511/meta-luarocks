@@ -10,9 +10,6 @@ SRC_URI = "git://github.com/Tangent128/lua-evdev \
            "
 SRCREV = "evdev-2.2.1"
 
-DEPENDS += ""
-RDEPENDS_${PN} = "lua"
-
 PR = "r1"
 
 S = "${WORKDIR}/git"

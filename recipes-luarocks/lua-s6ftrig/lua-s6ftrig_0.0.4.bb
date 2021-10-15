@@ -8,7 +8,6 @@ SRC_URI = "git://github.com/chris2511/lua-s6ftrig"
 SRCREV = "v${PV}"
 
 DEPENDS += "s6 skalibs"
-RDEPENDS_${PN} = "lua"
 
 S = "${WORKDIR}/git"
 

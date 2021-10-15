@@ -7,7 +7,6 @@ SRC_URI = "https://github.com/hoelzro/linotify/archive/${PV}.tar.gz"
 SRC_URI[sha256sum] = "21d005f16043397a85913a7d14a267716d6384f0228718d5de464bfc0274e338"
 
 DEPENDS += "inotify-tools"
-RDEPENDS_${PN} = "lua"
 LUAROCKS_ROCKSPEC= "INOTIFY_DIR="${RECIPE_SYSROOT}/usr/""
 
 S = "${WORKDIR}/linotify-${PV}"

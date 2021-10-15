@@ -7,7 +7,6 @@ SRC_URI = "git://github.com/mikejsavage/lua-fcgi.git;protocol=https"
 SRCREV = "master"
 
 DEPENDS += "fcgi"
-RDEPENDS_${PN} = "lua"
 
 S = "${WORKDIR}/git"
 

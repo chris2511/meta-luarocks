@@ -26,9 +26,7 @@ function inspect_pkg(source)
   if source.url:sub(1,9):lower() == "git+https" then
     source.url = "git" .. source.url:sub(10)
   end
-  if source.url:sub(-4):lower() == ".zip" then
-    unpack = "unzip -obq arch.zip"
-  elseif source.url:sub(1,4):lower() == "git:" or
+  if source.url:sub(1,4):lower() == "git:" or
          source.url:sub(-4):lower() == ".git" then
     if source.branch then
       source.url = source.url .. ";branch=" .. source.branch
@@ -38,20 +36,18 @@ function inspect_pkg(source)
     result["pkg_dir"] = "git"
     result["pkg_lic"] = "license"
     return result
-  else
-    unpack = "tar zxf arch.zip"
   end
   local ret = io.popen(string.format([[
 set -ex
 mkdir -p TEMP &&
 cd TEMP &&
 curl -sL -o arch.zip '%s' &&
-%s
-sha256sum arch.zip
-md5sum */LICEN* || md5sum */*.rockspec
+tar zxf arch.zip || unzip -obq arch.zip
+sha256sum arch.zip &&
+(md5sum */LICEN* || md5sum */COPYING* md5sum */*.rockspec) 2>/dev/null | tail -1
 cd .. && rm -rf TEMP/
-]], source.url, unpack), "r")
-  result["pkg_hash"] = string.format('SRC_URI[sha256sum] = "%s"',
+]], source.url), "r")
+  result["pkg_hash"] = string.format('SRC_URI[sha256sum] = "%s"\n',
 				 ret:read():match("[^%s]*"))
   local lic = ret:read()
   local f = function () return "" end
@@ -127,11 +123,19 @@ function create_package(package)
   local result = inspect_pkg(source)
   local bbfile = string.format("%s/%s_%s.bb", dir, bb_package, version)
 
+  local E = { result["pkg_hash"] }
   print(string.format("Generating Bitbake file '%s'", bbfile))
 
-  out = io.open(bbfile, "w")
-  desc = string.gsub(description.detailed or "", "%s+", " ")
-
+  local out = io.open(bbfile, "w")
+  local desc = string.gsub(description.detailed or "", "%s+", " ")
+  if #bb_deps > 0 then
+    E[#E+1] =  string.format('RDEPENDS_${PN} += "%s"\n',
+				table.concat(bb_deps, " "))
+  end
+  if result["pkg_dir"] ~= string.format("%s-%s", bb_package, version) then
+    E[#E+1] = string.format('S = "${WORKDIR}/%s"',
+			result["pkg_dir"]:gsub(version, "${PV}"))
+  end
   out:write(string.format([[
 SUMMARY = "%s"
 DESCRIPTION = "%s"
@@ -142,11 +146,6 @@ LIC_FILES_CHKSUM = "file://%s;md5=%s"
 SRC_URI = "%s"
 %s
 
-DEPENDS += "%s"
-RDEPENDS_${PN} = "lua"
-
-S = "${WORKDIR}/%s"
-
 # If the QA error about gnu-hash shows up, try uncommenting the following line
 # LUAROCKS_EXTRA_CC = "${LDFLAGS}"
 
@@ -154,9 +153,8 @@ inherit luarocks
 ]],
 description.summary, desc, description.homepage,
 license, result["pkg_lic"], result["license_md5"],
-source.url, result["pkg_hash"],
-table.concat(bb_deps, " "),
-result["pkg_dir"]
+source.url:gsub(version, "${PV}"),
+table.concat(E, "\n")
 ))
 
   do_deps(deps)
