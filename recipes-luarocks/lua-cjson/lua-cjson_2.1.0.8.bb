@@ -7,7 +7,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=b1fee3afe4f4a4b26c13016123b2d08a"
 SRC_URI = "git://github.com/openresty/lua-cjson.git \
            file://0001-use-macro-instead-of-header-defines-for-Lua-5.2-supp.patch \
            "
-SRCREV = "${PV}"
+SRCREV = "0df488874f52a881d14b5876babaa780bb6200ee"
 
 S = "${WORKDIR}/git"
 

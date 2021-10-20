@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/Tangent128/lua-evdev \
            file://0001-Rename-rockspec-file-and-add-support-for-linux-4.16.patch \
            file://0001-Add-support-for-initial-switch-state-via-EVIOCGSW.patch \
            "
-SRCREV = "evdev-2.2.1"
+SRCREV = "eabedac3c221d5b597d8f18ebf12b3374d2798d3"
 
 PR = "r1"
 

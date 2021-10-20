@@ -12,7 +12,7 @@ FILES_${PN}-dev = "${libdir}/luarocks"
 
 do_configure() {
   cat > ${WORKDIR}/luarocks.config << EOF
-rocks_trees = { "${RECIPE_SYSROOT}/usr",
+rocks_trees = { "${STAGING_EXECPREFIXDIR}",
 		"${WORKDIR}/rockinst/usr" }
 rocks_servers = { }
 arch = "${TARGET_OS}-${TARGET_ARCH}"
@@ -23,9 +23,9 @@ variables = {
   CC = "${CC} -fPIC ${LUAROCKS_EXTRA_CC}",
   LD = "${CC} ${LDFLAGS} ${LUAROCKS_EXTRA_LD}",
   CFLAGS = "${CFLAGS} ${LUAROCKS_EXTRA_CFLAGS}",
-  LUA_LIBDIR = "${RECIPE_SYSROOT}/usr/lib/lua/${LUA_VERSION}",
-  LUA_INCDIR = "${RECIPE_SYSROOT}/usr/include",
-  LUA_DIR = "${RECIPE_SYSROOT_NATIVE}/usr"
+  LUA_LIBDIR = "${STAGING_LIBDIR}/lua/${LUA_VERSION}",
+  LUA_INCDIR = "${STAGING_INCDIR}",
+  LUA_DIR = "${STAGING_DIR_NATIVE}${prefix_native}"
  }
 
 EOF
@@ -34,8 +34,8 @@ EOF
 do_compile() {
   export LUA_VERSION="${LUA_VERSION}"
   export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
-  export LUA_PATH=${RECIPE_SYSROOT_NATIVE}/usr/share/lua/${LUA_VERSION}/luarocks
-  ${RECIPE_SYSROOT_NATIVE}/usr/bin/lua ${RECIPE_SYSROOT_NATIVE}/usr/bin/luarocks --only-sources= make --deps-mode=none --no-manifest --verify ${LUAROCKS_ROCKSPEC}
+  export LUA_PATH=${STAGING_DATADIR_NATIVE}/lua/${LUA_VERSION}/luarocks
+  ${STAGING_BINDIR_NATIVE}/lua ${STAGING_BINDIR_NATIVE}/luarocks --only-sources= make --deps-mode=none --no-manifest --verify ${LUAROCKS_ROCKSPEC}
 }
 
 do_install() {
