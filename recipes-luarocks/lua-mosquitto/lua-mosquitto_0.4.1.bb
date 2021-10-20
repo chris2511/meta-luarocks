@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0e6c5f515f483d6b7dce640dcbee7e65"
 
 SRC_URI = "git://github.com/flukso/lua-mosquitto"
-SRCREV = "v${PV}"
+SRCREV = "73a1fd8c9df3718ae67991594b07ad8f79a69fd2"
 
 DEPENDS += "mosquitto"
 

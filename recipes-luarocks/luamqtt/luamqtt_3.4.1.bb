@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=8497ff0803ca32bb344bb942e74c100b"
 
 SRC_URI = "git://github.com/xHasKx/luamqtt"
-SRCREV = "v${PV}"
+SRCREV = "bf9994a588ef18542a164427566fd29e893507b1"
 
 RDEPENDS_${PN} = "luasocket"
 
