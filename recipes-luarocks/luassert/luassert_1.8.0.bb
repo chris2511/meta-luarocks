@@ -8,6 +8,6 @@ SRC_URI = "https://github.com/Olivine-Labs/luassert/archive/v${PV}.tar.gz"
 SRC_URI[sha256sum] = "5955234a63fdc208674314b2e97982bb551459b85b8ff11611a50421c6a29c76"
 
 DEPENDS += "lua-say"
-RDEPENDS_${PN} += "lua-say"
+RDEPENDS:${PN} += "lua-say"
 
 inherit luarocks

@@ -8,7 +8,7 @@ SRC_URI = "https://github.com/Olivine-Labs/busted/archive/v${PV}.tar.gz"
 SRC_URI[sha256sum] = "fda34db8cd10142d2a88d6df638a7d0874c295fd2bd6338c745cc546dc5847df"
 
 DEPENDS += "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
-RDEPENDS_${PN} = "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
+RDEPENDS:${PN} = "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
 
 S = "${WORKDIR}/busted-${PV}"
 

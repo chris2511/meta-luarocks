@@ -129,7 +129,7 @@ function create_package(package)
   local out = io.open(bbfile, "w")
   local desc = string.gsub(description.detailed or "", "%s+", " ")
   if #bb_deps > 0 then
-    E[#E+1] =  string.format('RDEPENDS_${PN} += "%s"\n',
+    E[#E+1] =  string.format('RDEPENDS:${PN} += "%s"\n',
 				table.concat(bb_deps, " "))
   end
   if result["pkg_dir"] ~= string.format("%s-%s", bb_package, version) then

@@ -8,7 +8,7 @@ SRC_URI = "http://stevedonovan.github.io/files/ldoc-${PV}.zip"
 SRC_URI[sha256sum] = "8a06fd47ee7518e78ca503adb64f907009246131c5b31ffff526a5c965ad7abb"
 
 DEPENDS += "lua-penlight lua-markdown"
-RDEPENDS_${PN} = "lua-penlight lua-markdown"
+RDEPENDS:${PN} = "lua-penlight lua-markdown"
 
 S = "${WORKDIR}/ldoc"
 

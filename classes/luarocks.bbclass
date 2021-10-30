@@ -4,11 +4,11 @@ BBCLASSEXTEND = "native"
 LUA_VERSION="5.3"
 
 DEPENDS += "luarocks-native lua"
-RDEPENDS_${PN} += "lua"
-RDEPENDS_${PN}-dev += "lua"
+RDEPENDS:${PN} += "lua"
+RDEPENDS:${PN}-dev += "lua"
 
-FILES_${PN} += "${libdir} ${datadir}"
-FILES_${PN}-dev = "${libdir}/luarocks"
+FILES:${PN} += "${libdir} ${datadir}"
+FILES:${PN}-dev = "${libdir}/luarocks"
 
 do_configure() {
   cat > ${WORKDIR}/luarocks.config << EOF
