@@ -25,7 +25,8 @@ variables = {
   CFLAGS = "${CFLAGS} ${LUAROCKS_EXTRA_CFLAGS}",
   LUA_LIBDIR = "${STAGING_LIBDIR}/lua/${LUA_VERSION}",
   LUA_INCDIR = "${STAGING_INCDIR}",
-  LUA_DIR = "${STAGING_DIR_NATIVE}${prefix_native}"
+  LUA_DIR = "${STAGING_DIR_NATIVE}${prefix_native}",
+  DEPS_DIR = "${STAGING_EXECPREFIXDIR}"
  }
 
 EOF
