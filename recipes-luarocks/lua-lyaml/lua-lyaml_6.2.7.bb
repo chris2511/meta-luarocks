@@ -11,6 +11,4 @@ DEPENDS += "libyaml"
 
 S = "${WORKDIR}/lyaml-${PV}"
 
-LUAROCKS_ROCKSPEC="YAML_DIR=${RECIPE_SYSROOT}/usr"
-
 inherit luarocks
