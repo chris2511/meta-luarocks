@@ -5,7 +5,7 @@ LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://COPYRIGHT;md5=0b3c61aa9de3625880d8ae5826177c98"
 
 SRC_URI = "git://github.com/lunarmodules/lualogging.git"
-SRCREV = "8b4d8dd5a311245a197890405ba9324b9f5f5ab1"
+SRCREV = "0bc4415de03ff1a99c92c02a5bed14a45b078079"
 
 DEPENDS += "luasocket"
 RDEPENDS:${PN} = "luasocket"
