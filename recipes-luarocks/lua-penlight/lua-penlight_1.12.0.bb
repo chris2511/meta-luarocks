@@ -5,7 +5,7 @@ LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=0a2993b604147dcce1ea113b72b618cd"
 
 SRC_URI = "git://github.com/lunarmodules/penlight.git"
-SRCREV = "e3712f00fae09a166dd62540b677600165d5bcd7"
+SRCREV = "16743e96a219cf5c07856b8d7dc36900eecac6c5"
 
 DEPENDS += "luafilesystem"
 RDEPENDS:${PN} = "luafilesystem"
