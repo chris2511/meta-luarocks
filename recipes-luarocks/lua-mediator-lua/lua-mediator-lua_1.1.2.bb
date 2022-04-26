@@ -4,9 +4,9 @@ HOMEPAGE = "http://olivinelabs.com/mediator_lua/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://mediator_lua-1.1.2-0.rockspec;md5=2ef677dfdd34e53985dd5738819007f7"
 
-SRC_URI = "https://github.com/Olivine-Labs/mediator_lua/archive/v${PV}-0.tar.gz"
-SRC_URI[sha256sum] = "faf5859fd2081be4e9e4fb8873a2dc65f7eff3fd93d6dd14da65f8e123fcff9b"
+SRC_URI = "git://github.com/Olivine-Labs/mediator_lua.git"
+SRCREV = "31cb1367084086579079e384ccfa6a40bf63cea7"
 
-S = "${WORKDIR}/mediator_lua-${PV}-0"
+S = "${WORKDIR}/git"
 
 inherit luarocks
