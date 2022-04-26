@@ -15,7 +15,7 @@ DEPENDS += "\
 SRC_URI = "git://github.com/luarocks/luarocks;protocol=https \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
            "
-SRCREV = "0c5934213e36b4f1348d199c65f84d8644413adc"
+SRCREV = "b2a271cc9798e56c443ace6e0a50f13148bf4bb2"
 
 S = "${WORKDIR}/git"
 
