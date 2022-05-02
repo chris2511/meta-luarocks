@@ -9,7 +9,8 @@ SRCREV = "73a1fd8c9df3718ae67991594b07ad8f79a69fd2"
 
 DEPENDS += "mosquitto"
 
-LUAROCKS_ROCKSPEC = "luarocks/${BP}-1.rockspec"
+PR = "r2"
+LUAROCKS_ROCKSPEC = "luarocks/${BP}-2.rockspec"
 
 S = "${WORKDIR}/git"
 
