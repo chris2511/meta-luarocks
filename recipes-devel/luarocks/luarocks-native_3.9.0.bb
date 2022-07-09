@@ -19,8 +19,6 @@ SRCREV = "b2a271cc9798e56c443ace6e0a50f13148bf4bb2"
 
 S = "${WORKDIR}/git"
 
-inherit native
-
 do_configure() {
     ./configure --prefix=${prefix}
 }
@@ -35,3 +33,4 @@ do_install() {
 
 FILES:${PN} += "${sysconfdir} ${bindir} ${datadir} ${libdir}"
 
+inherit native
