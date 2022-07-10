@@ -4,7 +4,7 @@ HOMEPAGE = "http://luaforge.net/projects/luasocket/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d5850c0e7e7928460cd638a38f062263"
 
-SRC_URI = "git://github.com/diegonehab/luasocket.git;protocol=https"
+SRC_URI = "git://github.com/diegonehab/luasocket.git;protocol=https;branch=master"
 SRCREV = "88c8a85cb6528232288ec590910b7a966aace52b"
 
 S = "${WORKDIR}/git"

@@ -4,7 +4,7 @@ HOMEPAGE = "https://github.com/chris2511/lua-s6ftrig"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7c89962b6cc0897cc0b2e290f50de782"
 
-SRC_URI = "git://github.com/chris2511/lua-s6ftrig"
+SRC_URI = "git://github.com/chris2511/lua-s6ftrig;branch=master;protocol=https"
 SRCREV = "b09ca2bc1fd6dbdf4b22f2db25a5029214be5b89"
 
 DEPENDS += "s6 skalibs"

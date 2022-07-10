@@ -4,7 +4,7 @@ HOMEPAGE = "http://olivinelabs.com/busted/"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=005de8f8f73245c988a708cf1cace960"
 
-SRC_URI = "git://github.com/Olivine-Labs/luassert.git"
+SRC_URI = "git://github.com/Olivine-Labs/luassert.git;branch=master;protocol=https"
 SRCREV = "c1c8d66e7fc6068eee70a6ed55fd74d7a9174202"
 
 DEPENDS += "lua-say"

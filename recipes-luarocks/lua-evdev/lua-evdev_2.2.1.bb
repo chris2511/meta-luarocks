@@ -4,7 +4,7 @@ HOMEPAGE = "http://github.com/Tangent128/lua-evdev"
 LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENCE;md5=09b2d059ab048def211a06d0018f9cbc"
 
-SRC_URI = "git://github.com/Tangent128/lua-evdev \
+SRC_URI = "git://github.com/Tangent128/lua-evdev;branch=master;protocol=https \
            file://0001-Rename-rockspec-file-and-add-support-for-linux-4.16.patch \
            file://0001-Add-support-for-initial-switch-state-via-EVIOCGSW.patch \
            "
