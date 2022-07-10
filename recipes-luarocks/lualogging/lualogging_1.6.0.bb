@@ -4,7 +4,7 @@ HOMEPAGE = "https://github.com/lunarmodules/lualogging"
 LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://COPYRIGHT;md5=0b3c61aa9de3625880d8ae5826177c98"
 
-SRC_URI = "git://github.com/lunarmodules/lualogging.git"
+SRC_URI = "git://github.com/lunarmodules/lualogging.git;protocol=https;branch=master"
 SRCREV = "0bc4415de03ff1a99c92c02a5bed14a45b078079"
 
 DEPENDS += "luasocket"
