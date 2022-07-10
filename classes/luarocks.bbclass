@@ -1,7 +1,7 @@
 
 BBCLASSEXTEND = "native"
 
-LUA_VERSION="5.3"
+LUA_VERSION="5.4"
 
 DEPENDS += "luarocks-native lua"
 RDEPENDS:${PN} += "lua"
