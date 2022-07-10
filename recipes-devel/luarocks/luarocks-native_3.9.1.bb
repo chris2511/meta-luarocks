@@ -12,10 +12,10 @@ DEPENDS += "\
             lua \
             "
 
-SRC_URI = "git://github.com/luarocks/luarocks;protocol=https \
+SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=master \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
            "
-SRCREV = "b2a271cc9798e56c443ace6e0a50f13148bf4bb2"
+SRCREV = "0e3f817f57ef6280d8e35a9954befaf05bdab61b"
 
 S = "${WORKDIR}/git"
 
