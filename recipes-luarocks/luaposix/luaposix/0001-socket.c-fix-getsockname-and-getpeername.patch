@@ -1,0 +1,56 @@
+From 47c4f149b9136a25ea1df0c6a5330fd56af5dd20 Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <christian@hohnstaedt.de>
+Date: Sun, 15 Jan 2023 19:55:15 +0100
+Subject: [PATCH] socket.c: fix getsockname() and getpeername()
+
+Both take addrlen as input parameter, which is now properly initialized
+to the size of the sockaddr_storage and not some
+random value from the stack.
+
+The returned path in sockaddr_un is \0 terminated. Use memchr(sun_path)
+to calculate the real sun_path length instead of 108 (sizeof sun_path).
+Otherwise we get a lua string with embedded zeros and other garbage.
+
+Signed-off-by: Christian Hohnstaedt <christian@hohnstaedt.de>
+---
+ ext/posix/sys/socket.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/ext/posix/sys/socket.c b/ext/posix/sys/socket.c
+index 7e3ae86..73c4215 100644
+--- a/ext/posix/sys/socket.c
++++ b/ext/posix/sys/socket.c
+@@ -103,7 +103,11 @@ pushsockaddrinfo(lua_State *L, int family, struct sockaddr *sa)
+ 		case AF_UNIX:
+ 		{
+ 			struct sockaddr_un *sau = (struct sockaddr_un *)sa;
+-			pushlstringfield("path", sau->sun_path, sizeof (sau->sun_path));
++			size_t path_len = sizeof sau->sun_path;
++			char *end = memchr(sau->sun_path, 0, path_len);
++			if (end)
++				path_len = end - sau->sun_path;
++			pushlstringfield("path", sau->sun_path, path_len);
+ 			break;
+ 		}
+ #if HAVE_LINUX_NETLINK_H
+@@ -913,7 +917,7 @@ static int Pgetsockname(lua_State *L)
+ {
+ 	int fd = checkint(L, 1);
+ 	struct sockaddr_storage sa;
+-	socklen_t salen;
++	socklen_t salen = sizeof sa;
+ 	checknargs (L, 1);
+ 	if (getsockname(fd, (struct sockaddr *)&sa, &salen) != 0)
+ 		return pusherror(L, "getsockname");
+@@ -936,7 +940,7 @@ static int Pgetpeername(lua_State *L)
+ {
+ 	int fd = checkint(L, 1);
+ 	struct sockaddr_storage sa;
+-	socklen_t salen;
++	socklen_t salen = sizeof sa;
+ 	checknargs (L, 1);
+ 	if (getpeername(fd, (struct sockaddr *)&sa, &salen) != 0)
+ 		return pusherror(L, "getpeername");
+-- 
+2.25.1
+

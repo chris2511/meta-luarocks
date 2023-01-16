@@ -5,7 +5,9 @@ LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f81069e00c0cad249f20efe958276db1"
 DEPENDS += "virtual/crypt"
 
-SRC_URI = "git://github.com/luaposix/luaposix.git;branch=release-v${PV};protocol=https"
+SRC_URI = "git://github.com/luaposix/luaposix.git;branch=release-v${PV};protocol=https \
+           file://0001-socket.c-fix-getsockname-and-getpeername.patch \
+           "
 SRCREV = "14043c5086ae738823a5dfbc9170d9e14193fbef"
 
 S = "${WORKDIR}/git"
