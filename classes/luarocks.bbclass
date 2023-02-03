@@ -1,5 +1,5 @@
 
-BBCLASSEXTEND = "native"
+BBCLASSEXTEND = "native nativesdk"
 
 LUA_VERSION="5.4"
 
@@ -41,6 +41,7 @@ do_compile() {
 }
 
 do_install() {
-  cp -a "${WORKDIR}/rockinst/usr" "${D}"
-  chown -R root:root "${D}"
+  mkdir -p "${D}${root_prefix}"
+  cp -a "${WORKDIR}/rockinst/usr" "${D}${root_prefix}"
+  chown -R root:root "${D}${root_prefix}"
 }
