@@ -1,7 +1,7 @@
 
 BBCLASSEXTEND = "native nativesdk"
 
-LUA_VERSION="5.4"
+inherit luaversion
 
 DEPENDS += "luarocks-native lua"
 RDEPENDS:${PN} += "lua"
@@ -36,7 +36,7 @@ EOF
 do_compile() {
   export LUA_VERSION="${LUA_VERSION}"
   export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
-  export LUA_PATH=${STAGING_DATADIR_NATIVE}/lua/${LUA_VERSION}/luarocks
+  export LUA_PATH=${STAGING_DATADIR_NATIVE}/lua/${LUA_VERSION}/?.lua
   ${STAGING_BINDIR_NATIVE}/lua ${STAGING_BINDIR_NATIVE}/luarocks --only-sources= make --deps-mode=none --no-manifest --verify ${LUAROCKS_ROCKSPEC}
 }
 

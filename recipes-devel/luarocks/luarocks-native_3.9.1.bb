@@ -19,16 +19,19 @@ SRCREV = "0e3f817f57ef6280d8e35a9954befaf05bdab61b"
 
 S = "${WORKDIR}/git"
 
+inherit luaversion
+
 do_configure() {
-    ./configure --prefix=${prefix}
+    ./configure --prefix="${prefix_native}" --lua-version="${LUA_VERSION}" \
+                --with-lua="${RECIPE_SYSROOT_NATIVE}/${prefix_native}"
 }
 
 do_compile() {
-    oe_runmake LUA_INCDIR="${RECIPE_SYSROOT}/usr/include"
+    oe_runmake LUA_INCDIR="${includedir}"
 }
 
 do_install() {
-    oe_runmake install DESTDIR=${D}
+    oe_runmake install DESTDIR="${D}/${base_prefix}"
 }
 
 FILES:${PN} += "${sysconfdir} ${bindir} ${datadir} ${libdir}"
