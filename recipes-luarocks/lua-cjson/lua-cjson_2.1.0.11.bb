@@ -4,10 +4,8 @@ HOMEPAGE = "http://www.kyne.com.au/~mark/software/lua-cjson.php"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=b1fee3afe4f4a4b26c13016123b2d08a"
 
-SRC_URI = "git://github.com/openresty/lua-cjson.git;branch=master;protocol=https \
-           file://0001-use-macro-instead-of-header-defines-for-Lua-5.2-supp.patch \
-           "
-SRCREV = "0df488874f52a881d14b5876babaa780bb6200ee"
+SRC_URI = "git://github.com/openresty/lua-cjson.git;branch=master;protocol=https"
+SRCREV = "91c3363e7dc86263a379719e5508fc0979df84d3"
 
 S = "${WORKDIR}/git"
 

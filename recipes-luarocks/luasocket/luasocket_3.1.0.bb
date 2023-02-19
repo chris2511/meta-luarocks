@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d5850c0e7e7928460cd638a38f062263"
 
 SRC_URI = "git://github.com/diegonehab/luasocket.git;protocol=https;branch=master"
-SRCREV = "88c8a85cb6528232288ec590910b7a966aace52b"
+SRCREV = "95b7efa9da506ef968c1347edf3fc56370f0deed"
 
 S = "${WORKDIR}/git"
 LUAROCKS_ROCKSPEC = "rockspecs/luasocket-3.0.0-1.rockspec"
