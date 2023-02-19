@@ -2,7 +2,7 @@ SUMMARY = "LuaRocks is the package manager for the Lua programming language"
 HOMEPAGE = "https://github.com/luarocks/luarocks"
 
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://COPYING;md5=5a26c606953a58c545aa194713fcdfc8"
+LIC_FILES_CHKSUM = "file://COPYING;md5=c5f3b16961f66b83cf7ce9b7ffdd1d88"
 
 DEPENDS += "\
             curl-native \
@@ -14,8 +14,9 @@ DEPENDS += "\
 
 SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=master \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
+           file://0002-luarocks-avoid-LUA_BINDIR-which-may-become-huge.patch \
            "
-SRCREV = "0e3f817f57ef6280d8e35a9954befaf05bdab61b"
+SRCREV = "0f4c793427a1cf2b7879ee668c1479058412629c"
 
 S = "${WORKDIR}/git"
 
