@@ -10,8 +10,7 @@ SRC_URI[sha256sum] = "01d648f4ad50c3d14f2acadee6acb26beda56990"
 DEPENDS += "lua-penlight lua-markdown"
 RDEPENDS:${PN} = "lua-penlight lua-markdown"
 
-SRCREV = "${AUTOREV}"
-PV = "1.4.6+git${SRCPV}"
+SRCREV = "e4940daf748affb86489b0782ed8abab2e88bebc"
 
 S = "${WORKDIR}/git"
 

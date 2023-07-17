@@ -5,8 +5,8 @@ LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f30d022f6ef53952fa87cc0b6fffb153"
 DEPENDS += "virtual/crypt"
 
-SRC_URI = "git://github.com/luaposix/luaposix.git;branch=release-v${PV};protocol=https"
-SRCREV = "9f566db8c2c762afaefb9571d3c30a90f8ddfd6e"
+SRC_URI = "git://github.com/luaposix/luaposix.git;branch=release-v36.2;protocol=https"
+SRCREV = "5a8d8c768fc3c51f42cb591e9523a60399efc6a1"
 
 S = "${WORKDIR}/git"
 
