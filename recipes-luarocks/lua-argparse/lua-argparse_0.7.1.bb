@@ -9,8 +9,4 @@ SRCREV = "27967d7b52295ea7885671af734332038c132837"
 
 S = "${WORKDIR}/git"
 
-do_install() {
-    lua ${WORKDIR}/test.lua
-}
-
 inherit luarocks
