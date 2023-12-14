@@ -41,7 +41,8 @@ do_compile() {
 }
 
 do_install() {
-  mkdir -p "${D}${root_prefix}"
-  cp -a "${WORKDIR}/rockinst/usr" "${D}${root_prefix}"
-  chown -R root:root "${D}${root_prefix}"
+  install -d -m 0755 ${D}${libdir}
+  cp -dR ${WORKDIR}/rockinst/usr/lib/* ${D}${libdir}
+  install -d -m 0755 ${D}${datadir}
+  cp -dR ${WORKDIR}/rockinst/usr/share/* ${D}${datadir}
 }
