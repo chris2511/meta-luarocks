@@ -4,7 +4,7 @@ HOMEPAGE = "https://github.com/chris2511/lua-netlink"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=7c89962b6cc0897cc0b2e290f50de782"
 
-SRC_URI = "git://github.com/chris2511/lua-netlink;branch=master;protocol=https"
+SRC_URI = "git://github.com/chris2511/lua-netlink;branch=main;protocol=https"
 SRCREV = "c7b6e5c41758a7a81228c5a570ae13c0ddfcd975"
 
 DEPENDS += "libmnl"
