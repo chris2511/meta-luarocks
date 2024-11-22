@@ -5,7 +5,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=78c1d9d1063a2e3c98965716ac8494f0"
 
 SRC_URI = "git://github.com/lunarmodules/luacheck.git;branch=master;protocol=https"
-SRCREV = "4d2979930245415e556a7c9f47b63ea038afcfee"
+SRCREV = "cc089e3f65acdd1ef8716cc73a3eca24a6b845e4"
 
 RDEPENDS:${PN} += "lua-argparse luafilesystem"
 
