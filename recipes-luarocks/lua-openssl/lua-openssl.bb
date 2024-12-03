@@ -14,7 +14,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=3cf22612ad608bd3bece7c4d0aa77078 \
 SRC_URI = "gitsm://github.com/zhaozg/lua-openssl.git;branch=master;protocol=https"
 SRCREV = "5bc07789cbe473bc86dda1957a168fb209077c38"
 
-PV = "0.9.0-0"
+PV = "0.9.0"
 PR = "0"
 
 DEPENDS += "openssl"

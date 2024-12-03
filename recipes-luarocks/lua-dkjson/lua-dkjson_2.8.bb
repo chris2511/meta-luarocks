@@ -7,6 +7,9 @@ LIC_FILES_CHKSUM = "file://dkjson-2.8.lua;beginline=7;endline=41;md5=5f00f8d3ba6
 SRC_URI = "http://dkolf.de/dkjson-lua/dkjson-2.8.lua"
 SRC_URI[sha256sum] = "eb3bf160688fb395a2db6bc52eeff4f7855a6321d2b41bdc754554d13f4e7d44"
 
+UPSTREAM_CHECK_REGEX = "/modules/dhkolf/dkjson/(?P<pver>\d+\.(\d+))"
+UPSTREAM_CHECK_URI = "https://luarocks.org/modules/dhkolf/dkjson"
+
 S = "${WORKDIR}"
 FILES:${PN} += "${datadir}/lua/${LUA_VERSION}"
 
