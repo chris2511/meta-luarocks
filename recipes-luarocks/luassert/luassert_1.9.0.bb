@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/Olivine-Labs/luassert.git;branch=master;protocol=htt
 SRCREV = "8d8dc8a54cc468048a128a867f6449a6c3fdd11a"
 
 DEPENDS += "lua-say"
-RDEPENDS:${PN} += "lua-say"
+RDEPENDS_${PN} += "lua-say"
 
 S = "${WORKDIR}/git"
 

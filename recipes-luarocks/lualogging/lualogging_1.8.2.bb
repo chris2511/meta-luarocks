@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/lunarmodules/lualogging.git;protocol=https;branch=ma
 SRCREV = "465c994788f1bc18fca950934fa5ec9a909f496c"
 
 DEPENDS += "luasocket"
-RDEPENDS:${PN} = "luasocket"
+RDEPENDS_${PN} = "luasocket"
 
 S = "${WORKDIR}/git"
 

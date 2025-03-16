@@ -11,7 +11,7 @@ UPSTREAM_CHECK_REGEX = "/modules/dhkolf/dkjson/(?P<pver>\d+\.(\d+))"
 UPSTREAM_CHECK_URI = "https://luarocks.org/modules/dhkolf/dkjson"
 
 S = "${WORKDIR}"
-FILES:${PN} += "${datadir}/lua/${LUA_VERSION}"
+FILES_${PN} += "${datadir}/lua/${LUA_VERSION}"
 
 inherit luaversion
 

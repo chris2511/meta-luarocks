@@ -4,11 +4,11 @@ BBCLASSEXTEND = "native nativesdk"
 inherit luaversion
 
 DEPENDS += "luarocks-native lua"
-RDEPENDS:${PN} += "lua"
-RDEPENDS:${PN}-dev += "lua"
+RDEPENDS_${PN} += "lua"
+RDEPENDS_${PN}-dev += "lua"
 
-FILES:${PN} += "${libdir} ${datadir}"
-FILES:${PN}-dev = "${libdir}/luarocks"
+FILES_${PN} += "${libdir} ${datadir}"
+FILES_${PN}-dev = "${libdir}/luarocks"
 
 ROCKINSTALL = "${WORKDIR}/rockinst/usr"
 do_configure() {

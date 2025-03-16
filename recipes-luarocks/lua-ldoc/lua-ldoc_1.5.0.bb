@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/lunarmodules/LDoc.git;branch=master;protocol=https"
 SRC_URI[sha256sum] = "01d648f4ad50c3d14f2acadee6acb26beda56990"
 
 DEPENDS += "lua-penlight lua-markdown"
-RDEPENDS:${PN} = "lua-penlight lua-markdown"
+RDEPENDS_${PN} = "lua-penlight lua-markdown"
 
 SRCREV = "e4940daf748affb86489b0782ed8abab2e88bebc"
 

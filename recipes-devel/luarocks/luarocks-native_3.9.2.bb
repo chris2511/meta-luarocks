@@ -12,7 +12,7 @@ DEPENDS += "\
             lua \
             "
 
-SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=master \
+SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=main \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
            file://0002-luarocks-avoid-LUA_BINDIR-which-may-become-huge.patch \
            "
@@ -22,9 +22,11 @@ S = "${WORKDIR}/git"
 
 inherit luaversion
 
+FILES_${PN} += "${bindir}"
+RECIPE_SYSROOT_NATIVE="${TMPDIR}/sysroots/x86_64-linux"
 do_configure() {
     ./configure --prefix="${prefix_native}" --lua-version="${LUA_VERSION}" \
-                --with-lua="${RECIPE_SYSROOT_NATIVE}/${prefix_native}"
+                --with-lua="${RECIPE_SYSROOT_NATIVE}${prefix_native}"
 }
 
 do_compile() {
@@ -35,6 +37,6 @@ do_install() {
     oe_runmake install DESTDIR="${D}/${base_prefix}"
 }
 
-FILES:${PN} += "${sysconfdir} ${bindir} ${datadir} ${libdir}"
+FILES_${PN} += "${sysconfdir} ${bindir} ${datadir} ${libdir}"
 
 inherit native

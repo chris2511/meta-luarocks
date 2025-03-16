@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/Olivine-Labs/busted.git;branch=master;protocol=https
 SRCREV = "02f31a9c103a44e166617cfdb6ba1b8994a9c912"
 
 DEPENDS += "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
-RDEPENDS:${PN} = "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
+RDEPENDS_${PN} = "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
 
 S = "${WORKDIR}/git"
 

@@ -8,7 +8,7 @@ SRC_URI = "git://github.com/lunarmodules/penlight.git;branch=master;protocol=htt
 SRCREV = "e2e5f6477bd060f0d94349662f24ac1ecfdf543e"
 
 DEPENDS += "luafilesystem"
-RDEPENDS:${PN} = "luafilesystem"
+RDEPENDS_${PN} = "luafilesystem"
 
 S = "${WORKDIR}/git"
 
