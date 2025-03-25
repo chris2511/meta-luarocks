@@ -12,7 +12,7 @@ DEPENDS += "\
             lua \
             "
 
-SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=master \
+SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=main \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
            file://0002-luarocks-avoid-LUA_BINDIR-which-may-become-huge.patch \
            "
