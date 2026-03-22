@@ -4,19 +4,12 @@ HOMEPAGE = "https://github.com/luarocks/luarocks"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=c5f3b16961f66b83cf7ce9b7ffdd1d88"
 
-DEPENDS += "\
-            curl-native \
-            lua-native \
-            openssl-native \
-            unzip-native \
-            lua \
-            "
+DEPENDS = "lua-native unzip-native"
 
-SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=main \
+SRC_URI = "https://luarocks.github.io/luarocks/releases/luarocks-${PV}.tar.gz \
            file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
-           file://0002-luarocks-avoid-LUA_BINDIR-which-may-become-huge.patch \
-           "
-SRCREV = "0f4c793427a1cf2b7879ee668c1479058412629c"
+           file://0001-fix-correctly-handling-wrap_bin_scripts-flag.patch"
+SRC_URI[sha256sum] = "245bf6ec560c042cb8948e3d661189292587c5949104677f1eecddc54dbe7e37"
 
 inherit luaversion
 
@@ -32,7 +25,5 @@ do_compile() {
 do_install() {
     oe_runmake install DESTDIR="${D}/${base_prefix}"
 }
-
-FILES:${PN} += "${sysconfdir} ${bindir} ${datadir} ${libdir}"
 
 inherit native

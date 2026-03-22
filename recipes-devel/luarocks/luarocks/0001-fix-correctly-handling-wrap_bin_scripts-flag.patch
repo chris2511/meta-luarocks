@@ -1,0 +1,58 @@
+From df425b4a24637797f552245685d7535ad9a56f7c Mon Sep 17 00:00:00 2001
+From: Bruno Thiago <45828157+brunotvs@users.noreply.github.com>
+Date: Tue, 17 Mar 2026 12:48:34 -0300
+Subject: [PATCH] fix:  correctly handling wrap_bin_scripts flag (#1866)
+
+Fixes #1827.
+
+Upstream-Status: Backport
+---
+ src/luarocks/core/cfg.lua | 1 +
+ src/luarocks/repos.lua    | 5 ++---
+ src/luarocks/repos.tl     | 5 ++---
+ 3 files changed, 5 insertions(+), 6 deletions(-)
+
+diff --git a/src/luarocks/core/cfg.lua b/src/luarocks/core/cfg.lua
+index 1c380e1df..a1dbb69f9 100644
+--- a/src/luarocks/core/cfg.lua
++++ b/src/luarocks/core/cfg.lua
+@@ -187,6 +187,7 @@ local function make_defaults(lua_version, target_cpu, platforms, home)
+       deps_mode = "one",
+       no_manifest = false,
+       check_certificates = false,
++      wrap_bin_scripts = true,
+
+       cache_timeout = 60,
+       cache_fail_timeout = 86400,
+diff --git a/src/luarocks/repos.lua b/src/luarocks/repos.lua
+index e283301c8..3898f2349 100644
+--- a/src/luarocks/repos.lua
++++ b/src/luarocks/repos.lua
+@@ -196,9 +196,8 @@ function repos.run_hook(rockspec, hook_name)
+ end
+
+ function repos.should_wrap_bin_scripts(rockspec)
+-
+-   if cfg.wrap_bin_scripts then
+-      return cfg.wrap_bin_scripts
++   if cfg.wrap_bin_scripts == false then
++      return false
+    end
+    if rockspec.deploy and rockspec.deploy.wrap_bin_scripts == false then
+       return false
+diff --git a/src/luarocks/repos.tl b/src/luarocks/repos.tl
+index 93c85d9a1..883fe4d46 100644
+--- a/src/luarocks/repos.tl
++++ b/src/luarocks/repos.tl
+@@ -196,9 +196,8 @@ function repos.run_hook(rockspec: Rockspec, hook_name: string): boolean, string
+ end
+
+ function repos.should_wrap_bin_scripts(rockspec: Rockspec): boolean
+-
+-   if cfg.wrap_bin_scripts then
+-      return cfg.wrap_bin_scripts
++   if cfg.wrap_bin_scripts == false then
++      return false
+    end
+    if rockspec.deploy and rockspec.deploy.wrap_bin_scripts == false then
+       return false
