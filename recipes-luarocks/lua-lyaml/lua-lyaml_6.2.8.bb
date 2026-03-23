@@ -9,6 +9,4 @@ SRCREV = "1afb1f870ae486097f79586502f4254d6074afcb"
 
 DEPENDS += "libyaml"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

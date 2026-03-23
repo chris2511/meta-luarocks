@@ -10,6 +10,4 @@ SRCREV = "0349f21d817f03002f57f2c6cc7b3feebd63f11a"
 
 DEPENDS = "libpwquality"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

@@ -4,6 +4,8 @@ Date: Sun, 19 Feb 2023 13:38:57 +0100
 Subject: [PATCH] luarocks: avoid LUA_BINDIR, which may become huge
 
 .. and exceed the shebang-limit of 127 characters.
+
+Upstream-Status: Inappropriate [oe specific]
 ---
  GNUmakefile | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)

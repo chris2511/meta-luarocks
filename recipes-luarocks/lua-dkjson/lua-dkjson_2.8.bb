@@ -10,7 +10,7 @@ SRC_URI[sha256sum] = "eb3bf160688fb395a2db6bc52eeff4f7855a6321d2b41bdc754554d13f
 UPSTREAM_CHECK_REGEX = "/modules/dhkolf/dkjson/(?P<pver>\d+\.(\d+))"
 UPSTREAM_CHECK_URI = "https://luarocks.org/modules/dhkolf/dkjson"
 
-S = "${WORKDIR}"
+S = "${UNPACKDIR}"
 FILES:${PN} += "${datadir}/lua/${LUA_VERSION}"
 
 inherit luaversion

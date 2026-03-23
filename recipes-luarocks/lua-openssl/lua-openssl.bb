@@ -19,8 +19,6 @@ PR = "0"
 
 DEPENDS += "openssl"
 
-S = "${WORKDIR}/git"
-
 LUAROCKS_EXTRA_CFLAGS = "-Ideps/auxiliar"
 
 inherit luarocks

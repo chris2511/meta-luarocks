@@ -7,6 +7,4 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=b1fee3afe4f4a4b26c13016123b2d08a"
 SRC_URI = "git://github.com/openresty/lua-cjson.git;branch=master;protocol=https"
 SRCREV = "91ca29db9a4a4fd0eedaebcd5d5f3ba2ace5ae63"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

@@ -8,6 +8,4 @@ SRCREV = "a56913e9c0922befb65227a00cf69c2e8052de1a"
 
 DEPENDS += "inotify-tools"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

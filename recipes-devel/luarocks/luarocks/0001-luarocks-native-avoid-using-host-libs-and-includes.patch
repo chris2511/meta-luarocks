@@ -5,6 +5,8 @@ Subject: [PATCH] luarocks-native: avoid using host libs and includes
 
 luarocks now ignores lua.h in /usr/include,
 as well as libs in /usr/lib
+
+Upstream-Status: Inappropriate [oe specific]
 ---
  src/luarocks/build/builtin.lua | 2 --
  1 file changed, 2 deletions(-)

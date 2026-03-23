@@ -7,6 +7,4 @@ LIC_FILES_CHKSUM = "file://LICENSE.md;md5=0b737be2e435b3c9610f7db199938011"
 SRC_URI = "git://github.com/tboox/ltui;nobranch=1;protocol=https"
 SRCREV = "184fb85b37fd086491a7f91698d2e781bd0ca977"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks
