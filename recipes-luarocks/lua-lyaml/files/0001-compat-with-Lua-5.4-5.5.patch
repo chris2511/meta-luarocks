@@ -1,0 +1,28 @@
+From 86fc48dc1697161d5d36b941e5aafd13834011fc Mon Sep 17 00:00:00 2001
+From: Francois Perrad <francois.perrad@gadz.org>
+Date: Sat, 3 Jan 2026 16:40:22 +0100
+Subject: [PATCH] compat with Lua 5.4 & 5.5
+
+Upstream-Status: Backport
+
+Signed-off-by: Francois Perrad <francois.perrad@gadz.org>
+---
+ ext/yaml/yaml.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/ext/yaml/yaml.c b/ext/yaml/yaml.c
+index 89bc5c4..3f48766 100644
+--- a/ext/yaml/yaml.c
++++ b/ext/yaml/yaml.c
+@@ -57,7 +57,11 @@ luaopen_yaml (lua_State *L)
+    parser_init (L);
+    scanner_init (L);
+
++#if LUA_VERSION_NUM >= 502
++   luaL_newlib(L, R);
++#else
+    luaL_register(L, "yaml", R);
++#endif
+
+    lua_pushliteral(L, MYVERSION);
+    lua_setfield(L, -2, "version");
