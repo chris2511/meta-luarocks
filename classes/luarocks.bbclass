@@ -31,6 +31,7 @@ variables = {
  }
 
 EOF
+  ${STAGING_BINDIR_NATIVE}/lua ${STAGING_BINDIR_NATIVE}/luarocks download  --rockspec ${PN} ${PV}
 }
 
 do_compile() {
