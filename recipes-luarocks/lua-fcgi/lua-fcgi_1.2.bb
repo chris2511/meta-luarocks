@@ -8,8 +8,6 @@ SRCREV = "73d7f013f2d40e1bddcf0fbec080513606b19def"
 
 DEPENDS += "fcgi"
 
-S = "${WORKDIR}/git"
-
 LUAROCKS_EXTRA_CC = "${LDFLAGS}"
 
 inherit luarocks

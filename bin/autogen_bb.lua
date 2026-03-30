@@ -132,10 +132,6 @@ function create_package(package)
     E[#E+1] =  string.format('RDEPENDS:${PN} += "%s"\n',
 				table.concat(bb_deps, " "))
   end
-  if result["pkg_dir"] ~= string.format("%s-%s", bb_package, version) then
-    E[#E+1] = string.format('S = "${WORKDIR}/%s"',
-			result["pkg_dir"]:gsub(version, "${PV}"))
-  end
   out:write(string.format([[
 SUMMARY = "%s"
 DESCRIPTION = "%s"

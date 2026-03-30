@@ -3,6 +3,7 @@ From: Christian Hohnstaedt <christian@hohnstaedt.de>
 Date: Wed, 1 Sep 2021 20:12:36 +0200
 Subject: [PATCH] Add support for initial switch state via EVIOCGSW
 
+Upstream-Status: Inactive-Upstream [lastrelease: 2016]
 ---
  evdev/core.c | 20 ++++++++++++++++++++
  1 file changed, 20 insertions(+)
@@ -22,7 +23,7 @@ index 8d8cb2b..0504e7d 100644
 +	int i, j;
 +
 +	if (ioctl(dev->fd, EVIOCGSW(sizeof(n)), &n) < 0)
-+		return luaL_error("ioctl(EVIOCGSW): %s", strerror(errno));
++		return luaL_error(L, "ioctl(EVIOCGSW): %s", strerror(errno));
 +
 +	lua_newtable(L);
 +	for (i=0, j=0; i<32; i++) {

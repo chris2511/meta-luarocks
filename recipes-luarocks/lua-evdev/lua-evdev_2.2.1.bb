@@ -12,6 +12,4 @@ SRCREV = "eabedac3c221d5b597d8f18ebf12b3374d2798d3"
 
 PR = "r1"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

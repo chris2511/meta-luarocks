@@ -5,23 +5,25 @@ Subject: [PATCH] luarocks-native: avoid using host libs and includes
 
 luarocks now ignores lua.h in /usr/include,
 as well as libs in /usr/lib
+
+Upstream-Status: Inappropriate [oe specific]
 ---
  src/luarocks/build/builtin.lua | 2 --
  1 file changed, 2 deletions(-)
 
 diff --git a/src/luarocks/build/builtin.lua b/src/luarocks/build/builtin.lua
-index 98db29d..6054b79 100644
+index 48b3c19..5558eb5 100644
 --- a/src/luarocks/build/builtin.lua
 +++ b/src/luarocks/build/builtin.lua
-@@ -236,12 +236,10 @@ function builtin.run(rockspec, no_install)
+@@ -231,12 +231,10 @@ function builtin.run(rockspec, no_install)
        compile_object = function(object, source, defines, incdirs)
           local extras = {}
           add_flags(extras, "-D%s", defines)
 -         add_flags(extras, "-I%s", incdirs)
-          return execute(variables.CC.." "..variables.CFLAGS, "-I"..variables.LUA_INCDIR, "-c", source, "-o", object, unpack(extras))
+          return execute(variables.CC .. " " .. variables.CFLAGS, "-I" .. variables.LUA_INCDIR, "-c", source, "-o", object, _tl_table_unpack(extras))
        end
-       compile_library = function (library, objects, libraries, libdirs)
-          local extras = { unpack(objects) }
+       compile_library = function(library, objects, libraries, libdirs)
+          local extras = { _tl_table_unpack(objects) }
 -         add_flags(extras, "-L%s", libdirs)
           if cfg.gcc_rpath then
              add_flags(extras, "-Wl,-rpath,%s", libdirs)

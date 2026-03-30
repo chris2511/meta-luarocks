@@ -4,14 +4,13 @@ HOMEPAGE = "http://stevedonovan.github.com/ldoc"
 LICENSE = "MIT&X11"
 LIC_FILES_CHKSUM = "file://COPYRIGHT;md5=4183d221633f1fc26c238fbb9e020e1f"
 
-SRC_URI = "git://github.com/lunarmodules/LDoc.git;branch=master;protocol=https"
+SRC_URI = "git://github.com/lunarmodules/LDoc.git;branch=master;protocol=https \
+           file://0001-Fix-Lua-5.5-compatibility-and-Penlight-deprecation.patch"
 SRC_URI[sha256sum] = "01d648f4ad50c3d14f2acadee6acb26beda56990"
 
 DEPENDS += "lua-penlight lua-markdown"
 RDEPENDS:${PN} = "lua-penlight lua-markdown"
 
 SRCREV = "e4940daf748affb86489b0782ed8abab2e88bebc"
-
-S = "${WORKDIR}/git"
 
 inherit luarocks
