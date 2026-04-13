@@ -1,2 +1,2 @@
 
-LUA_VERSION = "5.4"
+LUA_VERSION = "5.5"

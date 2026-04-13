@@ -13,10 +13,8 @@ DEPENDS += "\
             "
 
 SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=main \
-           file://0001-luarocks-native-avoid-using-host-libs-and-includes.patch \
-           file://0002-luarocks-avoid-LUA_BINDIR-which-may-become-huge.patch \
            "
-SRCREV = "0f4c793427a1cf2b7879ee668c1479058412629c"
+SRCREV = "fc402072fca856f05e8ae09799cd6c2a2352dd17"
 
 inherit luaversion
 
