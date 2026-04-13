@@ -9,6 +9,4 @@ SRCREV = "4d2979930245415e556a7c9f47b63ea038afcfee"
 
 RDEPENDS:${PN} += "lua-argparse luafilesystem"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

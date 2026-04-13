@@ -9,6 +9,4 @@ SRCREV = "579c90bb8679dcaf29ad5a0864ab18e5271a061d"
 
 RDEPENDS:${PN} = "luasocket"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

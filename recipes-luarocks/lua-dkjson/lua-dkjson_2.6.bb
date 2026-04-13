@@ -9,6 +9,4 @@ PR = "r1"
 SRC_URI = "http://dkolf.de/src/dkjson-lua.fsl/tarball/dkjson-${PV}.tar.gz"
 SRC_URI[sha256sum] = "bd07ee4eb398aed6cf36f92423845399a5b46c15090990cc90e56d07c46f9773"
 
-S = "${WORKDIR}/dkjson-${PV}"
-
 inherit luarocks

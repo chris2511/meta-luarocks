@@ -12,6 +12,4 @@ RDEPENDS:${PN} = "lua-penlight lua-markdown"
 
 SRCREV = "e4940daf748affb86489b0782ed8abab2e88bebc"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

@@ -12,6 +12,4 @@ DEPENDS += "mosquitto"
 PR = "r2"
 LUAROCKS_ROCKSPEC = "luarocks/${BP}-2.rockspec"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

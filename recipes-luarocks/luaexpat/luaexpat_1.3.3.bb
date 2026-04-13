@@ -9,6 +9,4 @@ SRCREV = "78adc136554a2be8ce16fd1a9c2860fd1ca272ca"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += "expat"
-
 inherit luarocks

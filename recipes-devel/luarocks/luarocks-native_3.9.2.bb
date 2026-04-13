@@ -18,8 +18,6 @@ SRC_URI = "git://github.com/luarocks/luarocks;protocol=https;branch=main \
            "
 SRCREV = "0f4c793427a1cf2b7879ee668c1479058412629c"
 
-S = "${WORKDIR}/git"
-
 inherit luaversion
 
 do_configure() {

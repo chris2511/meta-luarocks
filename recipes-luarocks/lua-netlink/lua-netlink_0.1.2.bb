@@ -9,6 +9,4 @@ SRCREV = "c7b6e5c41758a7a81228c5a570ae13c0ddfcd975"
 
 DEPENDS += "libmnl"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

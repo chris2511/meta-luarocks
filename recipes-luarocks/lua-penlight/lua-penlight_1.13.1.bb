@@ -10,6 +10,4 @@ SRCREV = "3b42fd05d8e60998b0fc5830a397b2354a81170b"
 DEPENDS += "luafilesystem"
 RDEPENDS:${PN} = "luafilesystem"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

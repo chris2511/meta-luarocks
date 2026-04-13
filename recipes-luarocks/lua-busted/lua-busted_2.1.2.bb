@@ -10,6 +10,4 @@ SRCREV = "673cb6bad2ee3876d45e004fcac1c2f8a816344f"
 DEPENDS += "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
 RDEPENDS:${PN} = "lua-cliargs luafilesystem luasystem lua-dkjson lua-say luassert lua-term lua-penlight lua-mediator-lua"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks
