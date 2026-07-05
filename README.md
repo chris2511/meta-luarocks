@@ -49,3 +49,12 @@ All packages get the `BBCLASSEXTEND = "native"` to be buildable
 for the host. This comes in handy if you want to call LUA scripts
 at build-time like for example `busted`
 
+## Testbuild all packages
+
+```sh
+cd ..
+git clone https://git.openembedded.org/bitbake
+bitbake/bin/bitbake-setup init meta-luarocks/setup.conf.json --non-interactive
+. bitbake-builds/luarocks-build/build/init-build-env
+bitbake packagegroup-luarocks
+```

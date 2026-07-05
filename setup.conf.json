@@ -1,0 +1,65 @@
+{
+    "version": "1.0",
+    "description": "OpenEmbedded - 'nodistro' basic configuration",
+    "sources": {
+        "bitbake": {
+            "git-remote": {
+                "uri": "https://git.openembedded.org/bitbake",
+                "branch": "master",
+                "rev": "master"
+            },
+            "path": "bitbake"
+        },
+        "openembedded-core": {
+            "git-remote": {
+                "uri": "https://github.com/openembedded/openembedded-core.git",
+                "branch": "master",
+                "rev": "master"
+            },
+            "path": "openembedded-core"
+        },
+        "meta-luarocks": {
+            "local": {
+                "path": "../../../meta-luarocks"
+            }
+        },
+        "meta-openembedded": {
+            "git-remote": {
+                "branch": "master",
+                "describe": "",
+                "remotes": {
+                    "origin": {
+                        "uri": "https://github.com/openembedded/meta-openembedded.git"
+                    }
+                },
+                "rev": "master"
+            },
+            "path": "meta-openembedded"
+        }
+    },
+    "bitbake-setup": {
+        "configurations": [
+            {
+                "bb-layers": [
+                    "openembedded-core/meta",
+                    "meta-openembedded/meta-oe",
+                    "meta-openembedded/meta-networking",
+                    "meta-openembedded/meta-python",
+                    "meta-openembedded/meta-multimedia",
+                    "meta-luarocks"
+                ],
+                "configurations": [
+                    {
+                        "name": "testbuild-luarocks",
+                        "description": "Luarocks Test Build",
+                        "oe-fragments": [
+                            "distro/luarocks",
+                            "machine/qemux86-64"
+                        ],
+                        "setup-dir-name": "luarocks-build"
+                    }
+                ]
+            }
+        ]
+    }
+}
