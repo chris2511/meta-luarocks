@@ -5,8 +5,14 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=d5850c0e7e7928460cd638a38f062263"
 
 SRC_URI = "git://github.com/diegonehab/luasocket.git;protocol=https;branch=master"
-SRCREV = "95b7efa9da506ef968c1347edf3fc56370f0deed"
+SRCREV = "e13de2013749961edaa126697f3290d3dca91823"
 
 LUAROCKS_ROCKSPEC = "rockspecs/luasocket-3.1.0-1.rockspec"
 
+# rockspec 3.1.0 wants to install missing etc directory
+do_compile:prepend() {
+    mkdir -p ${S}/etc
+}
+
+PR = "+git${SRCPV}"
 inherit luarocks
