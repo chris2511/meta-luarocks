@@ -1,0 +1,37 @@
+From 82411f10e0e2eca9a59273043f4c9c504f91e985 Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <christian@hohnstaedt.de>
+Date: Sat, 20 Jun 2026 16:42:12 +0200
+Subject: [PATCH 4/4] Adapt luarocks executable to use yocto package paths from
+ sysroot
+
+Upstream-Status: Inappropriate [oe specific]
+---
+ GNUmakefile | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index 506d7a86..ecf73f3b 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -68,11 +68,15 @@ luarocks-admin: config.unix
+ $(builddir)/luarocks: src/bin/luarocks config.unix
+ 	mkdir -p "$(@D)"
+ 	(printf '$(SHEBANG)\n'\
+-	'package.loaded["luarocks.core.hardcoded"] = { '\
++	'package.loaded["luarocks.core.hardcoded"] = {\n'\
+ 	"$$([ -n "$(FORCE_CONFIG)" ] && printf 'FORCE_CONFIG = true, ')"\
+ 	'SYSCONFDIR = [[$(luarocksconfdir)]] }\n'\
+-	'package.path=[[$(luadir)/?.lua;]] .. package.path\n'\
+-	'local list = package.searchers or package.loaders; table.insert(list, 1, function(name) if name:match("^luarocks%%.") then return loadfile([[$(luadir)/]] .. name:gsub([[%%.]], [[/]]) .. [[.lua]]) end end)\n'; \
++	'local sysroot, pp = os.getenv("LUA_SYSROOT"), ""\n'\
++	'if sysroot then for sys in sysroot:gmatch("[^;]+") do\n'\
++	'  local packagepath = [[$(luadir)/?.lua;]]\n'\
++	'  pp = pp .. packagepath:gsub("(/[^;]+)", sys .. "%%1") .. ";"\n'\
++	'end end\n'\
++	'package.path = pp\n'; \
+ 	tail -n +2 src/bin/luarocks \
+ 	)> "$@"
+ 
+-- 
+2.39.5
+

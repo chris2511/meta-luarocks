@@ -11,6 +11,7 @@ FILES:${PN} += "${libdir} ${datadir}"
 FILES:${PN}-dev = "${libdir}/luarocks"
 
 ROCKINSTALL = "${WORKDIR}/rockinst/usr"
+
 do_configure() {
   cat > ${WORKDIR}/luarocks.config << EOF
 rocks_trees = { "${STAGING_EXECPREFIXDIR}", "${ROCKINSTALL}" }
@@ -31,13 +32,15 @@ variables = {
  }
 
 EOF
-  ${STAGING_BINDIR_NATIVE}/lua ${STAGING_BINDIR_NATIVE}/luarocks download  --rockspec ${PN} ${PV}
+  export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
+  export LUA_SYSROOT="${RECIPE_SYSROOT};${RECIPE_SYSROOT_NATIVE}"
 }
 
 do_compile() {
   export LUA_VERSION="${LUA_VERSION}"
   export LUAROCKS_CONFIG=${WORKDIR}/luarocks.config
-  export LUA_PATH=${STAGING_DATADIR_NATIVE}/lua/${LUA_VERSION}/?.lua
+  export LUA_SYSROOT="${RECIPE_SYSROOT};${RECIPE_SYSROOT_NATIVE}"
+
   ${STAGING_BINDIR_NATIVE}/lua ${STAGING_BINDIR_NATIVE}/luarocks --only-sources= make --deps-mode=none --no-manifest --verify ${LUAROCKS_ROCKSPEC}
 }
 
