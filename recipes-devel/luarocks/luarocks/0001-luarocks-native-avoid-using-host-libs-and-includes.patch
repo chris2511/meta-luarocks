@@ -1,18 +1,18 @@
-From 679b8d6d88dca07f7cf7c79c7e1382be7093cdbe Mon Sep 17 00:00:00 2001
+From a0189371e103d9f9828378f0cf2848334e28b727 Mon Sep 17 00:00:00 2001
 From: Christian Hohnstaedt <christian@hohnstaedt.de>
-Date: Fri, 23 Jul 2021 00:36:57 +0200
-Subject: [PATCH] luarocks-native: avoid using host libs and includes
+Date: Sat, 28 Jun 2025 12:04:31 +0200
+Subject: [PATCH 1/4] luarocks-native: avoid using host libs and includes
 
 luarocks now ignores lua.h in /usr/include,
 as well as libs in /usr/lib
 
-Upstream-Status: Inappropriate [oe specific]
+Upstream-Status: Inappropriate [oer specific]
 ---
  src/luarocks/build/builtin.lua | 2 --
  1 file changed, 2 deletions(-)
 
 diff --git a/src/luarocks/build/builtin.lua b/src/luarocks/build/builtin.lua
-index 48b3c19..5558eb5 100644
+index 48b3c19d..5558eb55 100644
 --- a/src/luarocks/build/builtin.lua
 +++ b/src/luarocks/build/builtin.lua
 @@ -231,12 +231,10 @@ function builtin.run(rockspec, no_install)
@@ -28,3 +28,6 @@ index 48b3c19..5558eb5 100644
           if cfg.gcc_rpath then
              add_flags(extras, "-Wl,-rpath,%s", libdirs)
           end
+-- 
+2.39.5
+

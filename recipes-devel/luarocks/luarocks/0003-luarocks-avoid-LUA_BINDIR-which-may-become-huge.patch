@@ -1,0 +1,28 @@
+From ccb8575328565facf226ebedeb1e07888ec00f7d Mon Sep 17 00:00:00 2001
+From: Christian Hohnstaedt <christian@hohnstaedt.de>
+Date: Sat, 28 Jun 2025 12:07:44 +0200
+Subject: [PATCH 3/4] luarocks: avoid LUA_BINDIR, which may become huge
+
+.. and exceed the shebang-limit of 127 characters.
+
+Upstream-Status: Inappropriate [oe specific]
+---
+ GNUmakefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index c938756d..506d7a86 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -8,7 +8,7 @@ INSTALL = install
+ INSTALL_DATA = $(INSTALL) -m 644
+ BINARY_PLATFORM = unix
+ 
+-SHEBANG = \#!$(LUA)
++SHEBANG = \#!/usr/bin/env lua
+ luarocksconfdir = $(sysconfdir)/luarocks
+ luadir = $(datarootdir)/lua/$(LUA_VERSION)
+ builddir = ./build
+-- 
+2.39.5
+
