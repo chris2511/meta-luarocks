@@ -1,7 +1,7 @@
 SUMMARY = "A Lua Documentation Tool"
 DESCRIPTION = " LDoc is a LuaDoc-compatible documentation generator which can also process C extension source. Markdown may be optionally used to render comments, as well as integrated readme documentation and pretty-printed example files"
 HOMEPAGE = "http://stevedonovan.github.com/ldoc"
-LICENSE = "MIT&X11"
+LICENSE = "MIT AND X11"
 LIC_FILES_CHKSUM = "file://COPYRIGHT;md5=4183d221633f1fc26c238fbb9e020e1f"
 
 SRC_URI = "git://github.com/lunarmodules/LDoc.git;branch=master;protocol=https \

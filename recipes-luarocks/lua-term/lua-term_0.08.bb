@@ -1,6 +1,6 @@
 DESCRIPTION = "Terminal functions for Lua"
 HOMEPAGE = "https://github.com/hoelzro/lua-term"
-LICENSE = "MIT&X11"
+LICENSE = "MIT AND X11"
 LIC_FILES_CHKSUM = "file://COPYING;md5=99dd4648f9c5df2787ede8ba761a278e"
 
 SRC_URI = "git://github.com/hoelzro/lua-term.git;branch=master;protocol=https"

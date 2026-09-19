@@ -1,7 +1,7 @@
 SUMMARY = "Lua bindings for POSIX"
 DESCRIPTION = "A library binding various POSIX APIs. POSIX is the IEEE Portable Operating System Interface standard. luaposix is based on lposix."
 HOMEPAGE = "http://github.com/luaposix/luaposix/"
-LICENSE = "MIT&X11"
+LICENSE = "MIT AND X11"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=f30d022f6ef53952fa87cc0b6fffb153"
 DEPENDS += "virtual/crypt"
 

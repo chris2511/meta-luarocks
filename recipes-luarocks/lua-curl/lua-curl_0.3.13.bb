@@ -1,7 +1,7 @@
 SUMMARY = "Lua binding to libcurl"
 DESCRIPTION = " "
 HOMEPAGE = "https://github.com/Lua-cURL"
-LICENSE = "MIT&X11"
+LICENSE = "MIT AND X11"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=3a97a71d1515848a230ebb101ebedc90"
 DEPENDS = "curl"
 

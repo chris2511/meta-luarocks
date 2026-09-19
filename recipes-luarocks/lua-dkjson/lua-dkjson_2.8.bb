@@ -1,7 +1,7 @@
 SUMMARY = "David Kolf's JSON module for Lua"
 DESCRIPTION = "dkjson is a module for encoding and decoding JSON data. It supports UTF-8. JSON (JavaScript Object Notation) is a format for serializing data based on the syntax for JavaScript data structures."
 HOMEPAGE = "http://dkolf.de/src/dkjson-lua.fsl/"
-LICENSE = "MIT&X11"
+LICENSE = "MIT AND X11"
 LIC_FILES_CHKSUM = "file://dkjson-2.8.lua;beginline=7;endline=41;md5=5f00f8d3ba6f3985c156be5a750ab977"
 
 SRC_URI = "http://dkolf.de/dkjson-lua/dkjson-2.8.lua"
