@@ -7,6 +7,4 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=121fa4cef6513eb48482998ce7805bad"
 SRC_URI = "git://github.com/luarocks/argparse.git;branch=master;protocol=https"
 SRCREV = "27967d7b52295ea7885671af734332038c132837"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

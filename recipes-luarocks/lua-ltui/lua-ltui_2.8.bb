@@ -4,9 +4,9 @@ HOMEPAGE = "https://github.com/tboox/ltui"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=0b737be2e435b3c9610f7db199938011"
 
-SRC_URI = "git://github.com/tboox/ltui;nobranch=1;protocol=https"
+SRC_URI = "git://github.com/tboox/ltui;nobranch=1;protocol=https \
+           file://0001-Use-lua_Integer-functions.patch \
+           "
 SRCREV = "184fb85b37fd086491a7f91698d2e781bd0ca977"
-
-S = "${WORKDIR}/git"
 
 inherit luarocks

@@ -7,6 +7,4 @@ LIC_FILES_CHKSUM = "file://mediator_lua-1.1.2-0.rockspec;md5=2ef677dfdd34e53985d
 SRC_URI = "git://github.com/Olivine-Labs/mediator_lua.git;branch=master;protocol=https"
 SRCREV = "31cb1367084086579079e384ccfa6a40bf63cea7"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks

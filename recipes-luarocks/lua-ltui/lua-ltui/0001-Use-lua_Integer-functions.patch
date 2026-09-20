@@ -1,0 +1,146 @@
+From e89bace569f711992cfd101feaba1099344b89f5 Mon Sep 17 00:00:00 2001
+From: Lennart Koschick <lennart@koschick.eu>
+Date: Wed, 25 Mar 2026 14:56:54 +0100
+Subject: [PATCH] Use lua_Integer functions
+
+luaL_checkint and luaL_optint are no longer supported
+
+Upstream-Status: Inactive-Upstream [lastrelease: 2024]
+---
+ src/core/curses/curses.c | 43 ++++++++++++++++++++--------------------
+ 1 file changed, 21 insertions(+), 22 deletions(-)
+
+diff --git a/src/core/curses/curses.c b/src/core/curses/curses.c
+index f5b7265..67434fb 100644
+--- a/src/core/curses/curses.c
++++ b/src/core/curses/curses.c
+@@ -236,8 +236,8 @@ static int lt_curses_window_tostring(lua_State* lua)
+ static int lt_curses_window_move(lua_State* lua)
+ {
+     WINDOW* w = lt_curses_window_check(lua, 1);
+-    int y = luaL_checkint(lua, 2);
+-    int x = luaL_checkint(lua, 3);
++    int y = (int)luaL_checkinteger(lua, 2);
++    int x = (int)luaL_checkinteger(lua, 3);
+     lua_pushboolean(lua, LT_CURSES_OK(wmove(w, y, x)));
+     return 1;
+ }
+@@ -290,7 +290,7 @@ static int lt_curses_window_addnstr(lua_State* lua)
+ {
+     WINDOW* w = lt_curses_window_check(lua, 1);
+     const char* str = luaL_checkstring(lua, 2);
+-    int n = luaL_optint(lua, 3, -1);
++    int n = (int)luaL_optinteger(lua, 3, -1);
+     if (n < 0) n = (int)lua_strlen(lua, 2);
+     lua_pushboolean(lua, LT_CURSES_OK(waddnstr(w, str, n)));
+     return 1;
+@@ -352,7 +352,7 @@ static int lt_curses_window_getch(lua_State* lua)
+ static int lt_curses_window_attroff(lua_State* lua)
+ {
+     WINDOW* w = lt_curses_window_check(lua, 1);
+-    int attrs = luaL_checkint(lua, 2);
++    int attrs = (int)luaL_checkinteger(lua, 2);
+     lua_pushboolean(lua, LT_CURSES_OK(wattroff(w, attrs)));
+     return 1;
+ }
+@@ -361,7 +361,7 @@ static int lt_curses_window_attroff(lua_State* lua)
+ static int lt_curses_window_attron(lua_State* lua)
+ {
+     WINDOW* w = lt_curses_window_check(lua, 1);
+-    int attrs = luaL_checkint(lua, 2);
++    int attrs = (int)luaL_checkinteger(lua, 2);
+     lua_pushboolean(lua, LT_CURSES_OK(wattron(w, attrs)));
+     return 1;
+ }
+@@ -370,7 +370,7 @@ static int lt_curses_window_attron(lua_State* lua)
+ static int lt_curses_window_attrset(lua_State* lua)
+ {
+     WINDOW* w = lt_curses_window_check(lua, 1);
+-    int attrs = luaL_checkint(lua, 2);
++    int attrs = (int)luaL_checkinteger(lua, 2);
+     lua_pushboolean(lua, LT_CURSES_OK(wattrset(w, attrs)));
+     return 1;
+ }
+@@ -380,12 +380,12 @@ static int lt_curses_window_copywin(lua_State* lua)
+ {
+     WINDOW* srcwin = lt_curses_window_check(lua, 1);
+     WINDOW* dstwin = lt_curses_window_check(lua, 2);
+-    int sminrow = luaL_checkint(lua, 3);
+-    int smincol = luaL_checkint(lua, 4);
+-    int dminrow = luaL_checkint(lua, 5);
+-    int dmincol = luaL_checkint(lua, 6);
+-    int dmaxrow = luaL_checkint(lua, 7);
+-    int dmaxcol = luaL_checkint(lua, 8);
++    int sminrow = (int)luaL_checkinteger(lua, 3);
++    int smincol = (int)luaL_checkinteger(lua, 4);
++    int dminrow = (int)luaL_checkinteger(lua, 5);
++    int dmincol = (int)luaL_checkinteger(lua, 6);
++    int dmaxrow = (int)luaL_checkinteger(lua, 7);
++    int dmaxcol = (int)luaL_checkinteger(lua, 8);
+     int overlay = lua_toboolean(lua, 9);
+     lua_pushboolean(lua, LT_CURSES_OK(copywin(srcwin, dstwin, sminrow,
+         smincol, dminrow, dmincol, dmaxrow, dmaxcol, overlay)));
+@@ -679,7 +679,7 @@ static int lt_curses_getmouse(lua_State* lua)
+
+ static int lt_curses_mousemask(lua_State* lua)
+ {
+-    mmask_t m = luaL_checkint(lua, 1);
++    mmask_t m = (int)luaL_checkinteger(lua, 1);
+     mmask_t om;
+     m = mousemask(m, &om);
+     lua_pushinteger(lua, m);
+@@ -690,9 +690,9 @@ static int lt_curses_mousemask(lua_State* lua)
+
+ static int lt_curses_init_pair(lua_State* lua)
+ {
+-    short pair = luaL_checkint(lua, 1);
+-    short f = luaL_checkint(lua, 2);
+-    short b = luaL_checkint(lua, 3);
++    short pair = (int)luaL_checkinteger(lua, 1);
++    short f = (int)luaL_checkinteger(lua, 2);
++    short b = (int)luaL_checkinteger(lua, 3);
+
+     lua_pushboolean(lua, LT_CURSES_OK(init_pair(pair, f, b)));
+     return 1;
+@@ -700,14 +700,14 @@ static int lt_curses_init_pair(lua_State* lua)
+
+ static int lt_curses_COLOR_PAIR(lua_State* lua)
+ {
+-    int n = luaL_checkint(lua, 1);
++    int n = (int)luaL_checkinteger(lua, 1);
+     lua_pushnumber(lua, COLOR_PAIR(n));
+     return 1;
+ }
+
+ static int lt_curses_curs_set(lua_State* lua)
+ {
+-    int vis = luaL_checkint(lua, 1);
++    int vis = (int)luaL_checkinteger(lua, 1);
+     int state = curs_set(vis);
+     if (state == ERR)
+         return 0;
+@@ -718,7 +718,7 @@ static int lt_curses_curs_set(lua_State* lua)
+
+ static int lt_curses_napms(lua_State* lua)
+ {
+-    int ms = luaL_checkint(lua, 1);
++    int ms = (int)luaL_checkinteger(lua, 1);
+     lua_pushboolean(lua, LT_CURSES_OK(napms(ms)));
+     return 1;
+ }
+@@ -752,8 +752,8 @@ static int lt_curses_nl(lua_State* lua)
+
+ static int lt_curses_newpad(lua_State* lua)
+ {
+-    int nlines = luaL_checkint(lua, 1);
+-    int ncols = luaL_checkint(lua, 2);
++    int nlines = (int)luaL_checkinteger(lua, 1);
++    int ncols = (int)luaL_checkinteger(lua, 2);
+     lt_curses_window_new(lua, newpad(nlines, ncols));
+     return 1;
+ }
+@@ -862,4 +862,3 @@ __export int luaopen_ltui_lcurses(lua_State* lua)
+ #ifdef __cplusplus
+ }
+ #endif
+-

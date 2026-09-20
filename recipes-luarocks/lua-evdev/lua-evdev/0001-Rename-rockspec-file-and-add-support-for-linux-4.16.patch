@@ -6,6 +6,8 @@ Subject: [PATCH] Rename rockspec file and add support for linux >= 4.16
 - Comply with luarocks rockspec naming scheme
 - newer kernels use "input_event_[u]sec" to access the time
   entry
+
+Upstream-Status: Inactive-Upstream [lastrelease: 2016]
 ---
  evdev-scm.rockspec => evdev-scm-1.rockspec | 0
  evdev/core.c                               | 7 ++++++-

@@ -9,6 +9,4 @@ SRCREV = "b09ca2bc1fd6dbdf4b22f2db25a5029214be5b89"
 
 DEPENDS += "s6 skalibs"
 
-S = "${WORKDIR}/git"
-
 inherit luarocks
