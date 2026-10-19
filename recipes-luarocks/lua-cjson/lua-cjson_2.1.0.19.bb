@@ -5,6 +5,6 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=b1fee3afe4f4a4b26c13016123b2d08a"
 
 SRC_URI = "git://github.com/openresty/lua-cjson.git;branch=master;protocol=https"
-SRCREV = "e6daf3cdfac61055af3f7d88d9886942ff0de6e6"
+SRCREV = "5ce46a80b10ef9d380a45c9e6cff9ecffbe71ebb"
 
 inherit luarocks
