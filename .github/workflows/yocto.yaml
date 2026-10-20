@@ -26,14 +26,21 @@ jobs:
         sudo locale-gen
         echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
 
-    - name: Compile with Bitbake
+    - name: Prepare build-env
       run: |
-        set -e
         cd ..
-        ls
-        ls meta-luarocks || :
-        pwd
         git clone https://git.openembedded.org/bitbake
         bitbake/bin/bitbake-setup init meta-luarocks/setup.conf.json --non-interactive
-        . bitbake-builds/luarocks-build/build/init-build-env
+        bitbake/bin/bitbake-setup init meta-luarocks/setup-wrynose.conf.json --non-interactive
+
+    - name: Compile main with Bitbake
+      run: |
+        . ../bitbake-builds/luarocks-build/build/init-build-env
         bitbake packagegroup-luarocks
+        bitbake $(ls -1 ../../../meta-luarocks/recipes-luarocks |grep -v s6)
+
+    - name: Compile wrynose with Bitbake
+      run: |
+        . ../bitbake-builds/luarocks-wrynose/build/init-build-env
+        bitbake packagegroup-luarocks
+        bitbake $(ls -1 ../../../meta-luarocks/recipes-luarocks |grep -v s6)
