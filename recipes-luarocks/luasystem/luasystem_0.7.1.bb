@@ -5,6 +5,6 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=a4eaf40d8f862eaea513e6b9fa7efefc"
 
 SRC_URI = "git://github.com/lunarmodules/luasystem.git;branch=master;protocol=https"
-SRCREV = "6272094bc7265262cbca8363b425531ad0170caa"
+SRCREV = "edeec63394684c9281d0a28a8f50c70f39a78e62"
 
 inherit luarocks

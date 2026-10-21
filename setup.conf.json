@@ -46,6 +46,7 @@
                     "meta-openembedded/meta-networking",
                     "meta-openembedded/meta-python",
                     "meta-openembedded/meta-multimedia",
+                    "meta-openembedded/meta-webserver",
                     "meta-luarocks"
                 ],
                 "configurations": [
